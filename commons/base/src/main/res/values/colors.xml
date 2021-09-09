@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <color name="text_highlight">#778ca2</color>
+  <color name="text">#31383f</color>
+  <color name="text_title">#39434c</color>
+  <color name="divider">#e8ecef</color>
+  <color name="background_disable">#F1F5F8</color>
+  <color name="chip_temporary_absence">#fe8f5f</color>
+  <color name="chip_head_of_household">@color/color_primary</color>
+  <color name="chip_relationship">#98a9bc</color>
+  <color name="purple">#6200ee</color>
+  <color name="white">#ffffff</color>
+  <color name="black">#000000</color>
+  <color name="dark_grey">#a9a9a9</color>
+  <color name="light_grey">#f2f2f2</color>
+  <color name="blue">#1E8CAB</color>
+
+  <color name="app_divider">#e8ecef</color>
+
+  <color name="color_red">#d45d65</color>
+</resources>

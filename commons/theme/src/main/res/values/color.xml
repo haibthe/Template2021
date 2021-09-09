@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+~ Copyright (C) 2019 The Android Open Source Project
+~
+~ Licensed under the Apache License, Version 2.0 (the "License");
+~ you may not use this file except in compliance with the License.
+~ You may obtain a copy of the License at
+~
+~      http://www.apache.org/licenses/LICENSE-2.0
+~
+~ Unless required by applicable law or agreed to in writing, software
+~ distributed under the License is distributed on an "AS IS" BASIS,
+~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+~ See the License for the specific language governing permissions and
+~ limitations under the License.
+-->
+
+<resources>
+
+  <color name="color_primary">#ffbc12</color>
+  <color name="color_primary_variant">#ffbc12</color>
+  <color name="color_on_primary">#000000</color>
+  <color name="color_secondary">#75CB67</color>
+  <color name="color_secondary_variant">#75CB67</color>
+  <color name="color_on_secondary">#000000</color>
+  <color name="color_error">#FF3D00</color>
+  <color name="color_on_error">#fff</color>
+  <color name="color_surface">#fff</color>
+  <color name="color_on_surface">#000</color>
+  <color name="color_background">#F0F2F8</color>
+  <color name="color_on_background">#000</color>
+  <color name="color_status_bar">#000002</color>
+  <color name="text_shadow">#7F000000</color>
+  <color name="color_nav_background">#F5F7FA</color>
+  <color name="color_icon">#aebbcc</color>
+
+  <color name="color_background_selected">#c6e7ff</color>
+
+  <color name="color_text_01">#000</color>
+  <color name="color_text_02">#A1A1A1</color>
+
+  <color name="white">#ffffff</color>
+  <color name="black">#000</color>
+  <color name="tab_selected">@color/color_background_selected</color>
+  
+  <color name="color_above_bet">#75CB67</color>
+  <color name="color_normal_bet">#8E8E8E</color>
+  <color name="color_below_bet">#F46363</color>
+
+  <color name="divider">#ECEEF2</color>
+
+</resources>

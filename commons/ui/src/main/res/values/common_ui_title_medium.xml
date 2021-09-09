@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <style name="Style.Title" parent="@style/TextAppearance.MyTheme.Caption" />
+
+  <style name="Style.Title.Medium" parent="@style/Style.Title">
+    <item name="fontFamily">sans-serif-medium</item>
+  </style>
+</resources>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--  <style name="Theme.MyApp.Button" parent="Widget.MaterialComponents.Button">-->
+
+    <style name="Theme.MyApp.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.TextInputLayout</item>
+        <item name="hintTextColor">?attr/colorOnSurface</item>
+    </style>
+
+    <style name="ThemeOverlay.App.TextInputLayout" parent="">
+        <item name="colorPrimary">#99243b51</item>
+        <item name="colorOnSurface">#cc243b51</item>
+        <item name="colorError">@color/color_error</item>
+
+    </style>
+</resources>
