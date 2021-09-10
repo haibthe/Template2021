@@ -44,6 +44,8 @@ android {
       isShrinkResources = false
       proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
     }
+
+    applicationVariants.all(ApplicationVariantAction())
   }
 
   flavorDimensions(BuildProductDimensions.ENVIRONMENT)

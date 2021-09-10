@@ -21,8 +21,7 @@ object BuildModules {
   const val APP = ":app"
 
   object Features {
-    const val ATTACHMENTS = ":features:attachments"
-    const val DASHBOARD = ":features:dashboard"
+    // const val DASHBOARD = ":features:dashboard"
   }
 
 
@@ -30,7 +29,6 @@ object BuildModules {
     const val BASE = ":commons:base"
     const val UI = ":commons:ui"
     const val THEME = ":commons:theme"
-    const val VIEWS = ":commons:views"
   }
 
   object Libraries {
