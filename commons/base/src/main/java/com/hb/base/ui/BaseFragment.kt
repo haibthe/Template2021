@@ -1,5 +1,6 @@
 package com.hb.base.ui
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,9 +10,9 @@ import androidx.viewbinding.ViewBinding
 import com.airbnb.mvrx.BaseMvRxFragment
 import com.airbnb.mvrx.MvRxState
 import com.hb.base.rx.RxBus
-import io.reactivex.android.schedulers.AndroidSchedulers
+import com.hb.base.utils.BaseSchedulerProvider
+import com.hb.base.utils.RxUtil
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.getViewModel
 import kotlin.reflect.KClass
@@ -28,6 +29,9 @@ abstract class BaseFragment<S : MvRxState, VM : BaseViewModel<S>, VB : ViewBindi
 
   protected val rxBus: RxBus by inject()
   protected val disposable = CompositeDisposable()
+
+  protected val sharedPreferences: SharedPreferences by inject()
+  private val schedulerProvider: BaseSchedulerProvider by inject()
 
   abstract fun initUIComponent()
 //    abstract fun observerViewModel()
@@ -54,8 +58,7 @@ abstract class BaseFragment<S : MvRxState, VM : BaseViewModel<S>, VB : ViewBindi
     disposable.clear()
     disposable.addAll(
       rxBus.toObservable()
-        .subscribeOn(Schedulers.io())
-        .observeOn(AndroidSchedulers.mainThread())
+        .compose(RxUtil.applySchedulers(schedulerProvider))
         .subscribe(::busEvent)
     )
   }
@@ -70,5 +73,6 @@ abstract class BaseFragment<S : MvRxState, VM : BaseViewModel<S>, VB : ViewBindi
   }
 
   protected open fun onStateChanged(state: S) {
+    postInvalidate()
   }
 }

@@ -12,7 +12,7 @@ val KEY_PASSWORD: String by project
 android {
 
   defaultConfig {
-    applicationId = "com.hb.f88.app"
+    applicationId = "com.hb.app"
   }
 
   signingConfigs {
@@ -51,12 +51,12 @@ android {
   flavorDimensions(BuildProductDimensions.ENVIRONMENT)
   productFlavors {
     ProductFlavorDevelop.appCreate(this).apply {
-      resValue("string", "app_name", "F88 Dev")
+      resValue("string", "app_name", "MyApp Dev")
       buildConfigBooleanField("MOCK_DATA", false)
       buildConfigStringField("BASE_URL", "https://www.google.com/")
     }
     ProductFlavorProduction.appCreate(this).apply {
-      resValue("string", "app_name", "F88")
+      resValue("string", "app_name", "MyApp")
       buildConfigBooleanField("MOCK_DATA", false)
       buildConfigStringField("BASE_URL", "https://www.google.com/")
     }

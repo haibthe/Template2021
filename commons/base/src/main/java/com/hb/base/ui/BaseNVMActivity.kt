@@ -11,6 +11,8 @@ import androidx.annotation.Keep
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
 import com.hb.base.rx.RxBus
+import com.hb.base.utils.BaseSchedulerProvider
+import com.hb.base.utils.RxUtil
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -20,9 +22,10 @@ import timber.log.Timber
 @Keep
 abstract class BaseNVMActivity<VB : ViewBinding> : AppCompatActivity() {
 
-  val binding: VB by lazy { createBinding() }
+  protected val binding: VB by lazy { createBinding() }
 
-  val sharedPreferences: SharedPreferences by inject()
+  protected val sharedPreferences: SharedPreferences by inject()
+  private val schedulerProvider: BaseSchedulerProvider by inject()
 
   protected val rxBus: RxBus by inject()
   private val disposable = CompositeDisposable()
@@ -43,8 +46,7 @@ abstract class BaseNVMActivity<VB : ViewBinding> : AppCompatActivity() {
     disposable.clear()
     disposable.addAll(
       rxBus.toObservable()
-        .subscribeOn(Schedulers.io())
-        .observeOn(AndroidSchedulers.mainThread())
+        .compose(RxUtil.applySchedulers(schedulerProvider))
         .subscribe(::busEvent)
     )
   }

@@ -26,7 +26,6 @@ class App : MultiDexApplication() {
   override fun onCreate() {
     super.onCreate()
 
-
     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
     AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
 
@@ -41,7 +40,7 @@ class App : MultiDexApplication() {
     initAppFolder(this)
   }
 
-  private val allModules = arrayListOf<Module>(
+  private val allModules = arrayListOf(
     appModule,
     networkModule,
     dataSourceModule,

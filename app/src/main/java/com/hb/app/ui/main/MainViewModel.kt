@@ -2,10 +2,10 @@ package com.hb.app.ui.main
 
 import com.airbnb.mvrx.Success
 import com.hb.app.domain.usecases.AppUseCase
-import com.hb.base.ui.AppBaseMvRxViewModel
+import com.hb.base.ui.BaseViewModel
 import org.koin.core.inject
 
-class MainViewModel : AppBaseMvRxViewModel<MainState>(MainState()) {
+class MainViewModel : BaseViewModel<MainState>(MainState()) {
 
   private val appUseCase: AppUseCase by inject()
 

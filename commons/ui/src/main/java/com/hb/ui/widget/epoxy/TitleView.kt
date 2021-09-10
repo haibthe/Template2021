@@ -15,13 +15,16 @@ import com.hb.ui.databinding.CommonUiTitleViewBinding
 abstract class TitleView : EpoxyModelWithHolder<TitleView.Holder>() {
 
   @EpoxyAttribute
-  var title: String = ""
+  var title: CharSequence = ""
 
   @EpoxyAttribute
   var textAppearanceId: Int? = 0
 
   @EpoxyAttribute
-  var padding: IntArray = IntArray(4) {0}
+  var padding: IntArray = IntArray(4) { 0 }
+
+  @EpoxyAttribute
+  var callback: View.OnClickListener? = null
 
   override fun getDefaultLayout(): Int {
     return R.layout.common_ui_title_view
@@ -31,16 +34,19 @@ abstract class TitleView : EpoxyModelWithHolder<TitleView.Holder>() {
     holder.binding.apply {
       val context = root.context
 
-      tvTitle.text = title
+      tvTitle.setOnClickListener(callback)
+
       if (textAppearanceId != null && textAppearanceId != 0) {
         TextViewCompat.setTextAppearance(holder.binding.tvTitle, textAppearanceId!!)
       }
+
       root.updatePadding(
         ThemeUtil.dpToPx(context, padding[0]),
         ThemeUtil.dpToPx(context, padding[1]),
         ThemeUtil.dpToPx(context, padding[2]),
         ThemeUtil.dpToPx(context, padding[3]),
       )
+      tvTitle.text = title
     }
   }
 

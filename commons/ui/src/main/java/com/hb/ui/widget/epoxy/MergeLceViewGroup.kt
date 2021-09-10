@@ -1,8 +1,8 @@
 package com.hb.ui.widget.epoxy
 
 import android.view.View
+import com.hb.base.utils.LceAnimator
 import com.hb.ui.databinding.CommonUiEpoxyMergeLceBinding
-import com.hb.ui.utils.LceAnimator
 
 class MergeLceViewGroup(
   rootView: View,

@@ -1,7 +1,7 @@
 package com.hb.ui.widget.epoxy
 
+import com.hb.base.utils.LceAnimator
 import com.hb.ui.databinding.CommonUiEpoxyLceBinding
-import com.hb.ui.utils.LceAnimator
 
 class LceViewGroup(
   private val binding: CommonUiEpoxyLceBinding,

@@ -1,5 +1,6 @@
 package com.hb.base.ui
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,8 @@ import androidx.annotation.Keep
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import com.hb.base.rx.RxBus
+import com.hb.base.utils.BaseSchedulerProvider
+import com.hb.base.utils.RxUtil
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -23,6 +26,9 @@ abstract class BaseNVMFragment<VB : ViewBinding> : Fragment() {
 
   protected val rxBus: RxBus by inject()
   protected val disposable = CompositeDisposable()
+
+  protected val sharedPreferences: SharedPreferences by inject()
+  private val schedulerProvider: BaseSchedulerProvider by inject()
 
   abstract fun initUIComponent()
 
@@ -48,8 +54,7 @@ abstract class BaseNVMFragment<VB : ViewBinding> : Fragment() {
     disposable.clear()
     disposable.addAll(
       rxBus.toObservable()
-        .subscribeOn(Schedulers.io())
-        .observeOn(AndroidSchedulers.mainThread())
+        .compose(RxUtil.applySchedulers(schedulerProvider))
         .subscribe(::busEvent)
     )
   }
