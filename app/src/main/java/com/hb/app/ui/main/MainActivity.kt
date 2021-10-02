@@ -6,12 +6,12 @@ import com.hb.app.R
 
 class MainActivity : AppCompatActivity(R.layout.basic_activity) {
 
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    if (savedInstanceState == null) {
-      supportFragmentManager.beginTransaction()
-        .replace(R.id.container, MainFragment())
-        .commitNow()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.container, MainFragment())
+                .commitNow()
+        }
     }
-  }
 }

@@ -7,18 +7,18 @@ import org.koin.core.inject
 
 class MainViewModel : BaseViewModel<MainState>(MainState()) {
 
-  private val appUseCase: AppUseCase by inject()
+    private val appUseCase: AppUseCase by inject()
 
-  fun loadData() {
-    appUseCase.loadData().execute { request ->
-      with (copy(loadDataRequest = request)) {
-        when (request) {
-          is Success -> {
-            copy()
-          }
-          else -> copy()
+    fun loadData() {
+        appUseCase.loadData().execute { request ->
+            with(copy(loadDataRequest = request)) {
+                when (request) {
+                    is Success -> {
+                        copy()
+                    }
+                    else -> copy()
+                }
+            }
         }
-      }
     }
-  }
 }

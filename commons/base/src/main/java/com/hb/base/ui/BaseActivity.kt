@@ -39,10 +39,9 @@ abstract class BaseActivity<
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    initUIComponent()
-
     setContentView(binding.root)
 
+    initUIComponent()
     observerViewModel()
 
     disposable.clear()

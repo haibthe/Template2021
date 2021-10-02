@@ -31,6 +31,12 @@ object Dependencies {
 
   }
 
+  object DatabaseRoom {
+    const val CORE = "androidx.room:room-runtime:${Versions.AndroidX.ROOM}"
+    const val COMPILER = "androidx.room:room-compiler:${Versions.AndroidX.ROOM}"
+    const val EXT = "androidx.room:room-ktx:${Versions.AndroidX.ROOM}"
+    const val RX = "androidx.room:room-rxjava2:${Versions.AndroidX.ROOM}"
+  }
 
   object Retrofit {
     const val RETROFIT = "com.squareup.retrofit2:retrofit:${Versions.RETROFIT}"
@@ -75,6 +81,13 @@ object Dependencies {
     const val MAVERICKS = "com.airbnb.android:mvrx:${Versions.Airbnb.MAVERICKS}"
     // const val MAVERICKS = "com.airbnb.android:mavericks:${Versions.Airbnb.MAVERICKS}"
   }
+}
+
+fun DependencyHandler.room() {
+  implementation(Dependencies.DatabaseRoom.CORE)
+  kapt(Dependencies.DatabaseRoom.COMPILER)
+  implementation(Dependencies.DatabaseRoom.EXT)
+  implementation(Dependencies.DatabaseRoom.RX)
 }
 
 fun DependencyHandler.epoxy() {

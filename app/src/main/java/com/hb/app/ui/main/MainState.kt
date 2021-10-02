@@ -5,6 +5,6 @@ import com.airbnb.mvrx.MvRxState
 import com.airbnb.mvrx.Uninitialized
 
 data class MainState(
-  val test: Boolean = false,
-  val loadDataRequest: Async<Boolean> = Uninitialized,
+    val test: Boolean = false,
+    val loadDataRequest: Async<Boolean> = Uninitialized,
 ) : MvRxState

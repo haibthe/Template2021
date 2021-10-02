@@ -16,35 +16,26 @@
 
 <resources>
 
-  <color name="color_primary">#ffbc12</color>
-  <color name="color_primary_variant">#ffbc12</color>
-  <color name="color_on_primary">#000000</color>
-  <color name="color_secondary">#75CB67</color>
-  <color name="color_secondary_variant">#75CB67</color>
-  <color name="color_on_secondary">#000000</color>
-  <color name="color_error">#FF3D00</color>
-  <color name="color_on_error">#fff</color>
-  <color name="color_surface">#fff</color>
-  <color name="color_on_surface">#000</color>
-  <color name="color_background">#F0F2F8</color>
-  <color name="color_on_background">#000</color>
-  <color name="color_status_bar">#000002</color>
-  <color name="text_shadow">#7F000000</color>
-  <color name="color_nav_background">#F5F7FA</color>
-  <color name="color_icon">#aebbcc</color>
 
-  <color name="color_background_selected">#c6e7ff</color>
+  <color name="purple_200">#bb86fc</color> <!--Color primary (dark)-->
+  <color name="purple_500">#6200ee</color> <!--Color primary (light)-->
+  <color name="purple_600">#4b01d0</color> <!--Color primary variant (dark)-->
+  <color name="purple_700">#3700b3</color> <!--Color primary variant (light)-->
 
-  <color name="color_text_01">#000</color>
-  <color name="color_text_02">#A1A1A1</color>
+  <color name="green_200">#03dac6</color> <!--Color secondary-->
+  <color name="green_500">#018786</color> <!--Color secondary variant-->
 
-  <color name="white">#ffffff</color>
-  <color name="black">#000</color>
-  <color name="tab_selected">@color/color_background_selected</color>
-  
-  <color name="color_above_bet">#75CB67</color>
-  <color name="color_normal_bet">#8E8E8E</color>
-  <color name="color_below_bet">#F46363</color>
+  <color name="red_200">#cf6679</color> <!--Color error (dark)-->
+  <color name="red_600">#b00020</color> <!--Color error (light)-->
+
+  <!--Color surface (light), color on error (light), -->
+  <!--color on surface (dark), color on surface (dark)-->
+  <color name="white_50">#ffffff</color>
+
+  <color name="black_800">#121212</color> <!--Color surface (dark)-->
+  <!--Color on secondary (light), color on background (light),-->
+  <!--color on surface (light)-->
+  <color name="black_900">#000000</color>
 
   <color name="divider">#ECEEF2</color>
 

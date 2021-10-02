@@ -13,7 +13,8 @@ import kotlin.reflect.KProperty
  * private val binding: FHomeWorkoutDetailsBinding by viewBinding()
  * with your binding class and access it as you normally would.
  */
-inline fun <reified T : ViewBinding> ViewGroup.viewBinding() = ViewBindingDelegate(T::class.java, this)
+inline fun <reified T : ViewBinding> ViewGroup.viewBinding() =
+  ViewBindingDelegate(T::class.java, this)
 
 class ViewBindingDelegate<T : ViewBinding>(
   private val bindingClass: Class<T>,
@@ -24,7 +25,8 @@ class ViewBindingDelegate<T : ViewBinding>(
   override fun getValue(thisRef: ViewGroup, property: KProperty<*>): T {
     binding?.let { return it }
 
-    val inflateMethod = bindingClass.getMethod("inflate", LayoutInflater::class.java, ViewGroup::class.java)
+    val inflateMethod =
+      bindingClass.getMethod("inflate", LayoutInflater::class.java, ViewGroup::class.java)
     @Suppress("UNCHECKED_CAST")
     binding = inflateMethod.invoke(null, LayoutInflater.from(thisRef.context), thisRef) as T
     return binding!!

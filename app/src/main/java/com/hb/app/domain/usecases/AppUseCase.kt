@@ -6,15 +6,15 @@ import io.reactivex.Observable
 
 interface AppUseCase {
 
-  fun loadData(): Observable<Boolean>
+    fun loadData(): Observable<Boolean>
 }
 
 class AppUseCaseImpl(
-  private val schedulerProvider: BaseSchedulerProvider,
+    private val schedulerProvider: BaseSchedulerProvider,
 ) : AppUseCase {
 
-  override fun loadData(): Observable<Boolean> {
-    return Observable.just(true)
-      .compose(RxUtil.applySchedulers(schedulerProvider))
-  }
+    override fun loadData(): Observable<Boolean> {
+        return Observable.just(true)
+            .compose(RxUtil.applySchedulers(schedulerProvider))
+    }
 }

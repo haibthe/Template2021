@@ -1,5 +1,6 @@
 package com.hb.base.utils
 
+import io.reactivex.CompletableTransformer
 import io.reactivex.ObservableTransformer
 import io.reactivex.SingleTransformer
 
@@ -14,6 +15,13 @@ object RxUtil {
 
   fun <T> applySingleSchedulers(schedulerProvider: BaseSchedulerProvider): SingleTransformer<T, T> {
     return SingleTransformer<T, T> { observable ->
+      observable.subscribeOn(schedulerProvider.io())
+        .observeOn(schedulerProvider.ui())
+    }
+  }
+
+  fun applyCompletedSchedulers(schedulerProvider: BaseSchedulerProvider): CompletableTransformer {
+    return CompletableTransformer { observable ->
       observable.subscribeOn(schedulerProvider.io())
         .observeOn(schedulerProvider.ui())
     }

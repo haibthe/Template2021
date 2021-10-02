@@ -24,61 +24,61 @@ private const val CONNECT_TIME_OUT: Long = 60
 private const val READ_TIME_OUT: Long = 60
 
 val networkModule = module {
-  single { providerGson() }
-  single { BuildConfig.BASE_URL }
-  single<Converter.Factory> { GsonConverterFactory.create(get()) }
-  single { HttpLoggingInterceptor() }
-  single<Interceptor> { providesHttpHeaderInterceptor(get()) }
-  single { provideOkHttpClient(androidContext(), get(), get()) }
-  single { provideRetrofitBuilder(get(), get()) }
+    single { providerGson() }
+    single { BuildConfig.BASE_URL }
+    single<Converter.Factory> { GsonConverterFactory.create(get()) }
+    single { HttpLoggingInterceptor() }
+    single<Interceptor> { providesHttpHeaderInterceptor(get()) }
+    single { provideOkHttpClient(androidContext(), get(), get()) }
+    single { provideRetrofitBuilder(get(), get()) }
 }
 
 fun providerGson(): Gson {
-  val builder = GsonBuilder()
-  builder.setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
-  return builder.create()
+    val builder = GsonBuilder()
+    builder.setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
+    return builder.create()
 }
 
 private fun providesHttpHeaderInterceptor(pref: SharedPreferences) = object : Interceptor {
-  override fun intercept(chain: Interceptor.Chain): Response {
-    val original = chain.request()
-    val token = pref.getString(TOKEN_TAG, "").orEmpty()
-    val builder = original.newBuilder()
-      .method(original.method, original.body)
-      .addHeader("Authorization", token)
-    val newRequest = builder.build()
-    return chain.proceed(newRequest)
-  }
+    override fun intercept(chain: Interceptor.Chain): Response {
+        val original = chain.request()
+        val token = pref.getString(TOKEN_TAG, "").orEmpty()
+        val builder = original.newBuilder()
+            .method(original.method, original.body)
+            .addHeader("Authorization", token)
+        val newRequest = builder.build()
+        return chain.proceed(newRequest)
+    }
 }
 
 fun provideOkHttpClient(
-  context: Context,
-  headerInterceptor: Interceptor,
-  loggingInterceptor: HttpLoggingInterceptor
+    context: Context,
+    headerInterceptor: Interceptor,
+    loggingInterceptor: HttpLoggingInterceptor
 ): OkHttpClient {
-  val builder = OkHttpClient.Builder()
+    val builder = OkHttpClient.Builder()
 
-  builder.addNetworkInterceptor(headerInterceptor)
-  if (BuildConfig.DEBUG) {
-    loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
-    builder.addNetworkInterceptor(loggingInterceptor)
-  }
-  val cacheSize = 10 * 1024 * 1024
-  val cache = Cache(context.cacheDir, cacheSize.toLong())
-  builder.cache(cache)
-  builder.connectionPool(ConnectionPool(5, 5, TimeUnit.MINUTES))
-  builder.connectTimeout(CONNECT_TIME_OUT, TimeUnit.SECONDS)
-  builder.readTimeout(READ_TIME_OUT, TimeUnit.SECONDS)
-  return builder.build()
+    builder.addNetworkInterceptor(headerInterceptor)
+    if (BuildConfig.DEBUG) {
+        loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
+        builder.addNetworkInterceptor(loggingInterceptor)
+    }
+    val cacheSize = 10 * 1024 * 1024
+    val cache = Cache(context.cacheDir, cacheSize.toLong())
+    builder.cache(cache)
+    builder.connectionPool(ConnectionPool(5, 5, TimeUnit.MINUTES))
+    builder.connectTimeout(CONNECT_TIME_OUT, TimeUnit.SECONDS)
+    builder.readTimeout(READ_TIME_OUT, TimeUnit.SECONDS)
+    return builder.build()
 }
 
 fun provideRetrofitBuilder(
-  client: OkHttpClient,
-  converterFactory: Converter.Factory
+    client: OkHttpClient,
+    converterFactory: Converter.Factory
 ): Retrofit.Builder {
-  val builder = Retrofit.Builder()
-  return builder.client(client)
-    // .addCallAdapterFactory(RxErrorHandlingCallAdapterFactory.create())
-    // .addConverterFactory(NullOnEmptyConverterFactory())
-    .addConverterFactory(converterFactory)
+    val builder = Retrofit.Builder()
+    return builder.client(client)
+        // .addCallAdapterFactory(RxErrorHandlingCallAdapterFactory.create())
+        // .addConverterFactory(NullOnEmptyConverterFactory())
+        .addConverterFactory(converterFactory)
 }

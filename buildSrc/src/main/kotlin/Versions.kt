@@ -27,6 +27,7 @@ object Versions {
     const val CONSTRAINT_LAYOUT = "2.1.0"
     const val DESIGN = "1.4.0"
     const val SWIPE_REFRESH = "1.1.0"
+    const val ROOM = "2.3.0"
   }
 
   object Firebase {

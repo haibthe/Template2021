@@ -7,21 +7,20 @@ import com.hb.base.ui.BaseFragment
 
 class MainFragment : BaseFragment<MainState, MainViewModel, MainFragmentBinding>(MainViewModel::class) {
 
-  override fun onCreateBinding(
-    inflater: LayoutInflater,
-    container: ViewGroup?
-  ): MainFragmentBinding {
-    return MainFragmentBinding.inflate(inflater, container, false)
-  }
+    override fun onCreateBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ): MainFragmentBinding {
+        return MainFragmentBinding.inflate(inflater, container, false)
+    }
 
-  override fun initUIComponent() {
-    viewModel.loadData()
-  }
+    override fun initUIComponent() {
+        viewModel.loadData()
+    }
 
-  override fun observerViewModel() {
-  }
+    override fun observerViewModel() {
+    }
 
-  override fun invalidate() {
-
-  }
+    override fun invalidate() {
+    }
 }

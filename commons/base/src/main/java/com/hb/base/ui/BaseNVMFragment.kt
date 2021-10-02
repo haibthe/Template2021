@@ -11,9 +11,7 @@ import androidx.viewbinding.ViewBinding
 import com.hb.base.rx.RxBus
 import com.hb.base.utils.BaseSchedulerProvider
 import com.hb.base.utils.RxUtil
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
 import org.koin.android.ext.android.inject
 import timber.log.Timber
 
